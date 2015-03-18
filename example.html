@@ -3,8 +3,6 @@
   <title>jQuery UI Color Picker Widget</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js" type="text/javascript"></script>
-  <script type="text/coffeescript"></script>
-  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
   <script src="jquery.ui.colorPicker.min.js" type="text/javascript"></script>
   <link rel="stylesheet" href="css/jquery.ui.colorPicker.css">
   <script type="text/javascript">
@@ -25,50 +23,6 @@
     })
   </script>
 
-  <style type="text/css" media="screen">
-    html {
-      background-image: url('images/transparent.gif');
-      font-family: 'PT Sans', Arial, sans-serif;
-      font-size: 15px;
-      color: #252525;
-    }
-    body {
-      margin: 0;
-      height: 100%;
-    }
-    #page {
-      width: 840px;
-      padding: 30px;
-      margin: 0 auto;
-      background-color: #fafafa;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      border-radius: 0 0 3px 3px;
-    }
-    #picker {
-      float: right;
-      padding: 15px;
-      background-color: #f5f5f5;
-      border: 5px solid #eee;
-      border-radius: 3px;
-      margin-left: 30px;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: #2b6ae1;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #79aff2;
-      text-decoration: underline;
-    }
-    pre {
-      color: #871f05;
-    }
-  </style>
 </head>
 <body>
 
@@ -76,32 +30,6 @@
     <div id="picker">
       <input type="text" id="colorpicker">
     </div>
-
-    <h1>jQuery UI Color Picker Widget</h1>
-
-    <p>I've tried many color pickers during the years, but none that I really liked. This color picker is made using modern web technologies like HTML5 Canvas and CSS3.</p>
-
-    <p>The color wheel is drawn in canvas when the page loads, which means it can be scaled to almost any size, and still look good. Great for when you just need a tiny picker, or one that fills the entire screen.</p>
-
-    <p>The color picker is based on the HSLA color system, but the output can be changed with the <strong>format</strong> option. Valid formats are <em id="formats"><a href="#" title="HSLA">HSLA</a>, <a href="#" title="HSL">HSL</a>, <a href="#" title="RGBA">RGBA</a>, <a href="#" title="RGB">RGB</a> and <a href="#" title="Hex">Hex</a></em>.</p>
-
-    <p>It also supports pasting colors directly into the text field below the color wheel. The input colors can be any of the formats mentioned above.</p>
-
-    <p>The widget was made by <a href="http://lindekleiv.com/">Olav Andreas Lindekleiv</a>, and is available on <a href="http://bitbucket.org/lindekleiv/jquery-ui-colorpicker">BitBucket</a> under the BSD License.</p>
-
-    <h3>How to use it</h3>
-    <p>The widget is pretty easy to use. You can simply do</p>
-    <pre>$('input#myColorPicker').colorPicker();</pre>
-    <p>and a color picker with a 250 pixel diameter will be created. You can also tell it to use a specific output format, or a custom diameter like this:</p>
-    <pre>$('input#myColorPicker').colorPicker({
-      format: 'hex',
-      size: 100
-});</pre>
-    <p>To set the color programmatically, you would do something like this:</p>
-    <pre>$('input#myColorPicker').colorPicker('setColor', 40, 80, 60, 0.9);</pre>
-    <p>The values are hue, saturation, lightness and alpha. The line above will give you the color of this page's background (at least it was, until you changed it).</p>
-    <p>Alternatively, you can set the color with a string (HSLA, HSL, RGBA, RGB and Hex):</p>
-    <pre>$('input#myColorPicker').colorPicker('setColor', 'rgba(200, 30, 150, 0.8)');</pre>
   </div>
 
 </body>
