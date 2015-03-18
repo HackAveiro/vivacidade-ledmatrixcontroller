@@ -19,6 +19,7 @@
       $('em#formats a').click(function(){
         var format = $(this).attr('title').toLowerCase();
         $('#colorpicker').colorPicker('option', 'format', 'hsl');
+        console.log($('#colorpicker').colorPicker('option', 'format', 'hsl'));
       })
     })
   </script>
