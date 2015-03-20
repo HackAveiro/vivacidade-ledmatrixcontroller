@@ -13,23 +13,23 @@
  */
 
 .jQWCP-wWidget {
-	/* position: absolute; */
-	/* width: 420px; */
-	/* height: 180px; */
-	/* background: #eee; */
-	/* box-shadow: 1px 1px 4px #000; */
-	/* border-radius: 4px; */
-	/* border: solid 1px #aaa; */
-	 padding: 10px;
+	position: absolute;
+	width: 420px;
+	height: 180px;
+	background: #eee;
+	box-shadow: 1px 1px 4px #000;
+	border-radius: 4px;
+	border: solid 1px #aaa;
+	padding: 10px;
 }
 
 .jQWCP-wWidget.jQWCP-block {
-	/* position: relative; */
-	/* border-top-color: #aaa; */
-	/* border-left-color: #aaa; */
-	/* border-right-color: #ddd; */
-	/* border-bottom-color: #ddd; */
-	/* box-shadow: -1px -1px 1px #666; */
+	position: relative;
+	border-top-color: #aaa;
+	border-left-color: #aaa;
+	border-right-color: #ddd;
+	border-bottom-color: #ddd;
+	box-shadow: -1px -1px 1px #666;
 }
 
 .jQWCP-wWheel {
