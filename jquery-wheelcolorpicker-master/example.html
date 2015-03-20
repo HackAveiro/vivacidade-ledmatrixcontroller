@@ -29,24 +29,11 @@ $('#color-block').on('sliderdown', function(){
      color = $('#color-block').wheelColorPicker('getColor');
 
     $('#color-block').wheelColorPicker('setValue', $.fn.wheelColorPicker.colorToStr(color,'hex'));
-
+    console.log($('#color-block').data('jQWCP.color'));
      var rgbColor = $.fn.wheelColorPicker.colorToStr(color, 'rgb');
     $('#cenas').css('background-color', rgbColor);
 
 });
-
-$('#color-block').on('focus', function(){
-
-     color = $('#color-block').wheelColorPicker('getColor');
-
-    $('#color-block').wheelColorPicker('setValue', $.fn.wheelColorPicker.colorToStr(color,'hex'));
-
-     var rgbColor = $.fn.wheelColorPicker.colorToStr(color, 'rgb');
-    $('#cenas').css('background-color', rgbColor);
-
-});
-
-
 
 		});
 	</script>
