@@ -15,6 +15,12 @@
 			$('#color-inline2').wheelColorPicker({ sliders: "whsvp", preview: true, format: "css" });
 			$('#color-inline3').wheelColorPicker({ live: false, sliders: "wrgbap", format: "rgba" });
 			$('#color-block').wheelColorPicker({ layout: 'block', sliders: "whsvrgbap" });
+            
+$('#color-block').on('slidermove', function(){
+  //alert('oi');
+ console.log($('#color-block').wheelColorPicker('getColor'));
+});
+            
 		});
 	</script>
 </head>
@@ -65,6 +71,10 @@
 		See <a href="http://www.jar2.net/projects/jquery-wheelcolorpicker">here</a> 
 		for more information regarding the plugin and documentation.
 	</p>
+<h1 id="cenas">AQUI VAI APARECER A COR</h1>
+<script type="text/javascript">
+
+</script>
 </body>
 
 </html>
