@@ -45,7 +45,7 @@
                             ("000" + hsv_object.V.map()).substr(-4,4);
                     
                     console.log(send_this);
-//                    publish(hue.map(0, 360, 0, 255),topic+'bitmap', 2);
+                    publish(send_this,topic+'bitmap', 2);
                 };
             });
             
