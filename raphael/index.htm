@@ -21,7 +21,7 @@
             
             // this is where colorpicker created
                 cp = Raphael.colorpicker(40, 20, 300, "#eee"),
-                //cp2 = Raphael.colorwheel(360, 20, 300, "#eee"),
+                cp2 = Raphael.colorwheel(360, 20, 300, "#eee"),
             
                 clr = Raphael.color("#eee");
             vr.innerHTML = clr.r;
@@ -33,7 +33,7 @@
             vl.innerHTML = Math.round(clr.l * 100) + "%";
             out.onkeyup = function () {
                 cp.color(this.value);
-                //cp2.color(this.value);
+                cp2.color(this.value);
             };
             // assigning onchange event handler
             var onchange = function (item) {
@@ -52,8 +52,8 @@
                     vl.innerHTML = Math.round(clr.l * 100) + "%";
                 };
             };
-            cp.onchange = onchange(cp);
-            //cp2.onchange = onchange(cp);
+            cp.onchange = onchange(cp2);
+            cp2.onchange = onchange(cp);
             // that’s it. Too easy
         });
         </script>
