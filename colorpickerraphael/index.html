@@ -53,7 +53,7 @@
             //Gets  called if the websocket/mqtt connection gets disconnected for any reason
             client.onConnectionLost = function (responseObject) {
                 //Depending on your scenario you could implement a reconnect logic here
-                alert("connection lost: " + responseObject.errorMessage);
+                $("#messages").append("connection lost: " + responseObject.errorMessage);
             };
 
             //Gets called whenever you receive a message for your subscriptions
