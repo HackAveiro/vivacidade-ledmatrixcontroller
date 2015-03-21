@@ -24,8 +24,8 @@
              * Function to map 0-360 to 0-255
              * https://github.com/FastLED/FastLED/issues/147
              */
-            Number.prototype.map = function ( in_min , in_max , out_min , out_max ) {
-                return Math.round(( this - in_min ) * ( out_max - out_min ) / ( in_max - in_min ) + out_min);
+            Number.prototype.map = function () {
+                return Math.round(( this - 0 ) * ( 255 - 0 ) / ( 360 - 0 ) + 0);
             }
             
             Raphael(function () {
@@ -36,10 +36,16 @@
                 
                 // assigning onchange event handler
                 cp.onchange = function (clr) {
-                    var hue = Colors.hex2hsv(clr).H;
-//                    console.log(hue);
-                    console.log(hue.map(0, 360, 0, 255));
-                    publish(hue.map(0, 360, 0, 255),topic+'bitmap', 2);
+                    var hsv_object = Colors.hex2hsv(clr);
+                    console.log(hsv_object);
+                    
+                    var send_this = 
+                            ("000" + hsv_object.H.map()).substr(-4,4) +
+                            ("000" + hsv_object.S.map()).substr(-4,4) +
+                            ("000" + hsv_object.V.map()).substr(-4,4);
+                    
+                    console.log(send_this);
+//                    publish(hue.map(0, 360, 0, 255),topic+'bitmap', 2);
                 };
             });
             
