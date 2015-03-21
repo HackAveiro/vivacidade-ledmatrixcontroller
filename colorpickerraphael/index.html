@@ -40,12 +40,12 @@
                     console.log(hsv_object);
                     
                     var send_this = 
-                            ("000" + hsv_object.H.map()).substr(-4,4) +
-                            ("000" + hsv_object.S.map()).substr(-4,4) +
-                            ("000" + hsv_object.V.map()).substr(-4,4);
+                            ("000" + hsv_object.H.map()).substr(-3,3) +
+                            ("000" + hsv_object.S.map()).substr(-3,3) +
+                            ("000" + hsv_object.V.map()).substr(-3,3);
                     
                     console.log(send_this);
-                    publish(send_this,topic+'bitmap', 2);
+//                    publish(send_this,topic+'bitmap', 2);
                 };
             });
             
