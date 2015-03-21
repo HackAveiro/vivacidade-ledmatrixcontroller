@@ -66,16 +66,7 @@
         <script src="js/colors.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
         Raphael(function () {
-            var out = document.getElementById("output"),
-                vr = document.getElementById("vr"),
-                vg = document.getElementById("vg"),
-                vb = document.getElementById("vb"),
-                vh = document.getElementById("vh"),
-                vh2 = document.getElementById("vh2"),
-                vs = document.getElementById("vs"),
-                vs2 = document.getElementById("vs2"),
-                vv = document.getElementById("vv"),
-                vl = document.getElementById("vl"),
+            var //out = document.getElementById("output"),
 
                 reg = /^#(.)\1(.)\2(.)\3$/,
 
@@ -83,25 +74,19 @@
                 cp = Raphael.colorpicker(40, 20, 300, "#eee"),
 
                 clr = Raphael.color("#eee");
-            vr.innerHTML = clr.r;
-            vg.innerHTML = clr.g;
-            vb.innerHTML = clr.b;
-            vh.innerHTML = vh2.innerHTML = Math.round(clr.h * 360) + "°";
-            vs.innerHTML = vs2.innerHTML = Math.round(clr.s * 100) + "%";
-            vv.innerHTML = Math.round(clr.v * 100) + "%";
-            vl.innerHTML = Math.round(clr.l * 100) + "%";
-            out.onkeyup = function () {
+
+            /*out.onkeyup = function () {
                 cp.color(this.value);
                 out.value = this.value;
                 out.style.background = out.value;
-            };
+            };*/
             // assigning onchange event handler
             cp.onchange = function (clr) {
                     console.log($c.hex2hsv(clr).a);
                     console.log(clr);
-                    out.value = clr.replace(reg, "#$1$2$3");
-                    out.style.background = clr;
-                    out.style.color = Raphael.rgb2hsb(clr).b < .5 ? "#fff" : "#000";
+                    //out.value = clr.replace(reg, "#$1$2$3");
+                    //out.style.background = clr;
+                    //out.style.color = Raphael.rgb2hsb(clr).b < .5 ? "#fff" : "#000";
                 };
             });
         </script>
@@ -109,34 +94,7 @@
     <body>
         <div id="picker2"></div>
 
-<table id="values">
-                <tbody><tr>
-                    <th>R</th>
-                    <td id="vr">238</td>
-                    <th>H</th>
-                    <td id="vh">54°</td>
-                    <th>H</th>
-                    <td id="vh2">54°</td>
-                </tr>
-                <tr>
-                    <th>G</th>
-                    <td id="vg">216</td>
-                    <th>S</th>
-                    <td id="vs">87%</td>
-                    <th>S</th>
-                    <td id="vs2">87%</td>
-                </tr>
-                <tr>
-                    <th>B</th>
-                    <td id="vb">20</td>
-                    <th>B</th>
-                    <td id="vv">93%</td>
-                    <th>L</th>
-                    <td id="vl">51%</td>
-                </tr>
-            </tbody></table>
-
-            <input type="text" value="#eeeeee" id="output" style="background: rgb(238, 216, 20) none repeat scroll 0% 0%; color: rgb(0, 0, 0);">
+            <!--<input type="text" value="#eeeeee" id="output" style="background: rgb(238, 216, 20) none repeat scroll 0% 0%; color: rgb(0, 0, 0);">-->
 
     </body>
 </html>
