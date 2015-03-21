@@ -97,10 +97,11 @@
             };
             // assigning onchange event handler
             cp.onchange = function (clr) {
+                    console.log($c.hex2hsv(clr).a);
+                    console.log(clr);
                     out.value = clr.replace(reg, "#$1$2$3");
                     out.style.background = clr;
                     out.style.color = Raphael.rgb2hsb(clr).b < .5 ? "#fff" : "#000";
-                    console.log($c.hex2hsv(clr).a);
                 };
             });
         </script>
