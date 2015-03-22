@@ -52,6 +52,7 @@
             host = 'shineupon.me';
             port = 9001;
             topic = '/hackaveiro/';
+            last_message_time = Date.now();
             
             //Using the HiveMQ public Broker, with a random client Id
             var client = new Messaging.Client(host, port, "myclientid_" + parseInt(Math.random() * 100, 10));
@@ -65,6 +66,7 @@
             //Gets called whenever you receive a message for your subscriptions
             client.onMessageArrived = function (message) {
                 //Do something with the push message you received
+                last_message_time = Date.now();
                 $('#messages').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span>');
             };
 
@@ -88,15 +90,16 @@
                 var message = new Messaging.Message(""+payload);
                 message.destinationName = topic;
                 message.qos = qos;
-                client.send(message);
+                
+                if((Date.now()-last_message_time) > 250){
+                    last_message_time = Date.now();
+                    client.send(message);
+                }
                 
             }
             
             $( document ).ready(function() {
                 client.connect(options);
-//                $("#color").change(function(){
-//                    publish(topic+'bitmap', 2);
-//                });
             });
         </script>
     </head>
