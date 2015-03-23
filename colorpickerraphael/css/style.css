@@ -1,0 +1,7 @@
+body {
+    background: #333;
+    margin: 0;
+}
+span {
+    display: block; /* one message per line */
+}
