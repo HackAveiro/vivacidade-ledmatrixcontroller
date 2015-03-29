@@ -1,31 +1,32 @@
-
+var color = "#0f0";
 /**
  * Function to map 0-360 to 0-255
  * https://github.com/FastLED/FastLED/issues/147
  */
 Number.prototype.map = function () {
     return Math.round((this - 0) * (255 - 0) / (360 - 0) + 0);
-}
+};
 
 Raphael(function () {
     var reg = /^#(.)\1(.)\2(.)\3$/,
-            // this is where colorpicker created
-            cp = Raphael.colorpicker(0, 0, 200, "#eee", "picker");
-    clr = Raphael.color("#eee");
-
-    // assigning onchange event handler
-    cp.onchange = function (clr) {
-        var hsv_object = Colors.hex2hsv(clr);
+    cp = Raphael.colorpicker(0, 0, 200, "#eee", "picker");
+    
+    cp.onchange = function (color) {
+        $("#picker").data("color", color);
+        var hsv_object = Colors.hex2hsv(color);
         console.log(hsv_object);
-
+        
         var send_this =
                 ("000" + hsv_object.H.map()).substr(-3, 3) +
                 ("000" + hsv_object.S.map()).substr(-3, 3) +
                 ("000" + hsv_object.V.map()).substr(-3, 3);
 
         console.log(send_this);
-        publish(send_this, topic + 'bitmap', 2);
+//        publish(send_this, topic + 'bitmap', 2);
+        
     };
+    
+    
 });
 
 host = 'shineupon.me';
@@ -74,9 +75,44 @@ var publish = function (payload, topic, qos) {
         last_message_time = Date.now();
         client.send(message);
     }
-
-}
+};
 
 $(document).ready(function () {
     client.connect(options);
+    
+    isMouseDown = false;
+    $('td').mousedown(function() {
+        isMouseDown = true;
+        $(this).css({backgroundColor:'red'});
+    }).mouseup(function() {
+        isMouseDown = false;
+    });
+
+    $('td').hover(function() {
+        if(isMouseDown)
+            $(this).css({backgroundColor:'orange'});
+    });
+    
+    $("td").on("touchmove", function (event){
+        var coords = event.originalEvent.touches[0];
+        if($(document.elementFromPoint(coords.clientX, coords.clientY)).is("td")){
+            $(document.elementFromPoint(coords.clientX, coords.clientY)).css({backgroundColor:'green'});
+        }
+    });
+    
+    // Responsive grid...
+    $(window).on("orientationchange resize",function(){
+        responsiveGrid();
+    });
+    
+    function responsiveGrid(){
+        if($(window).height() > $(window).width()){
+            $("#grid").height($( window ).width());
+            $("#grid").width($( window ).width());
+        } else {
+            $("#grid").height($( window ).height());
+            $("#grid").width($( window ).height());
+        }
+    }
+    responsiveGrid();
 });

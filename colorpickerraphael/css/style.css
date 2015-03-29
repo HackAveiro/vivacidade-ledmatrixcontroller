@@ -5,3 +5,13 @@ body {
 span {
     display: block; /* one message per line */
 }
+
+#grid {
+    -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    /*touch-action: none;*/
+    cursor: pointer;
+    border: 1px solid #000;
+}
+#grid td {
+    border: 1px solid #000;
+}
