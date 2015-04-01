@@ -13,20 +13,18 @@ Raphael(function () {
     
     cp.onchange = function (color) {
         $("#picker").data("color", color);
-        var hsv_object = Colors.hex2hsv(color);
-        console.log(hsv_object);
+//        var hsv_object = Colors.hex2hsv(color);
+//        console.log(hsv_object);
         
-        var send_this =
-                ("000" + hsv_object.H.map()).substr(-3, 3) +
-                ("000" + hsv_object.S.map()).substr(-3, 3) +
-                ("000" + hsv_object.V.map()).substr(-3, 3);
-
-        console.log(send_this);
+//        var send_this =
+//                ("000" + hsv_object.H.map()).substr(-3, 3) +
+//                ("000" + hsv_object.S.map()).substr(-3, 3) +
+//                ("000" + hsv_object.V.map()).substr(-3, 3);
+        
+//        console.log(send_this);
 //        publish(send_this, topic + 'bitmap', 2);
         
     };
-    
-    
 });
 
 host = 'shineupon.me';
@@ -101,10 +99,6 @@ $(document).ready(function () {
     });
     
     // Responsive grid...
-    $(window).on("orientationchange resize",function(){
-        responsiveGrid();
-    });
-    
     function responsiveGrid(){
         if($(window).height() > $(window).width()){
             $("#grid").height($( window ).width());
@@ -115,4 +109,50 @@ $(document).ready(function () {
         }
     }
     responsiveGrid();
+    
+    $(window).on("orientationchange resize",function(){
+        responsiveGrid();
+    });
+    
+    // Detect changes
+//    var ColorMatrix = [];
+//    for(var i=0; i<9; i++) {
+//        ColorMatrix[i] = new Array(9);
+//    }
+    setInterval(function (){
+//        var changesInColorMatrix = [];
+        $("#grid").children().children().each(function (row_index, row){
+//            ColorMatrix[index] = [];
+            var send_this = row_index;
+            $(row).children().each(function (col_index,col){
+//                if(ColorMatrix[row_index][col_index] != $(col).css("background-color")){
+//                    console.log("mudou!");
+//                }
+//                ColorMatrix[index].push($(elementt).css("background-color"));
+                
+//                $("#picker").data("color", color);
+//                var hsv_object = Colors.hex2hsv(color);
+//                console.log(hsv_object);
+
+//                console.log($(col).css("background-color"));
+
+
+                var color = $(col).css("background-color").replace("rgb(", "").replace("rgba(", "").replace(")", "").split(",");
+//                console.log(color);
+                color = (Colors.rgb2hsl(color));
+                
+                send_this +=
+                        ("000" + color.H.map()).substr(-3, 3) +
+                        ("000" + color.S.map()).substr(-3, 3) +
+                        ("000" + color.L.map()).substr(-3, 3);
+
+//                publish(send_this, topic + 'bitmap', 2);
+                
+            });
+            
+                console.log(send_this);
+        });
+        console.log("------------------------");
+    }, 1000);
+    
 });
