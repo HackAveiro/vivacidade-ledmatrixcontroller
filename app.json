@@ -1,0 +1,7 @@
+{
+  "name": "vivacidade-ledmatrixcontroller",
+  "description": "vivacidade-ledmatrixcontroller",
+  "repository": "https://github.com/HackAveiro/vivacidade-ledmatrixcontroller",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}
