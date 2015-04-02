@@ -1,25 +1,17 @@
 {
-  "name": "vivacidade-ledmatrixcontroller",
-  "version": "0.1.0",
-  "description": "vivacidade-ledmatrixcontroller",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
+  "name": "vivacidade-led-matrix-controller",
+  "version": "1.0.0",
+  "description": "Vivacidade - Led Matrix Controller",
   "dependencies": {
-    "express": "~4.9.x"
+    "gulp": "^3.5.6",
+    "gulp-sass": "^1.3.3",
+    "gulp-concat": "^2.2.0",
+    "gulp-minify-css": "^0.3.0",
+    "gulp-rename": "^1.2.0"
   },
-  "engines": {
-    "node": "0.10.x"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/HackAveiro/vivacidade-ledmatrixcontroller"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "devDependencies": {
+    "bower": "^1.3.3",
+    "gulp-util": "^2.2.14",
+    "shelljs": "^0.3.0"
+  }
 }
