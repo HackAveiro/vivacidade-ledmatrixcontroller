@@ -1,5 +1,5 @@
 {
-  "name": "vivacidade-led-matrix-controller",
+  "name": "vivacidade-ledmatrixcontroller",
   "version": "1.0.0",
   "description": "Vivacidade - Led Matrix Controller",
   "dependencies": {
