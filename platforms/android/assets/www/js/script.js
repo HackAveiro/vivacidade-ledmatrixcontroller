@@ -44,7 +44,7 @@ client.onConnectionLost = function (responseObject) {
 client.onMessageArrived = function (message) {
     //Do something with the push message you received
     last_message_time = Date.now();
-    $('#messages').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span>');
+    //$('#messages').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span>');
 };
 
 //Connect Options
@@ -74,34 +74,25 @@ var publish = function (payload, topic, qos) {
     }
 };
 
-$(document).ready(function () {
-//    client.connect(options);
-    
-    // Responsive grid...
+// Responsive grid...
     function responsiveGrid(){
-        if($(window).height() > $(window).width()){
-            $("#grid").height($( window ).width());
-            $("#grid").width($( window ).width());
+        if($(".scroll-content:eq(0)").height() > $(".scroll-content:eq(0)").width()){
+            $("#grid").height($(".scroll-content:eq(0)").width());
+            $("#grid").width($(".scroll-content:eq(0)").width());
         } else {
-            $("#grid").height($( window ).height());
-            $("#grid").width($( window ).height());
+            $("#grid").height($(".scroll-content:eq(0)").height());
+            $("#grid").width($(".scroll-content:eq(0)").height());
         }
     }
-    responsiveGrid();
+
+$(document).ready(function () {
     
     $(window).on("orientationchange resize",function(){
         responsiveGrid();
     });
     
-    // Detect changes
-//    var ColorMatrix = [];
-//    for(var i=0; i<9; i++) {
-//        ColorMatrix[i] = new Array(9);
-//    }
     setInterval(function (){
-//        var changesInColorMatrix = [];
         $("#grid").children().children().each(function (row_index, row){
-//            ColorMatrix[index] = [];
             var send_this = row_index;
             $(row).children().each(function (col_index,col){
 //                if(ColorMatrix[row_index][col_index] != $(col).css("background-color")){
@@ -124,14 +115,13 @@ $(document).ready(function () {
                         ("000" + color.H.map()).substr(-3, 3) +
                         ("000" + color.S.map()).substr(-3, 3) +
                         ("000" + color.L.map()).substr(-3, 3);
-
-//                publish(send_this, topic + 'bitmap', 2);
+                
+                publish(send_this, topic + 'bitmap', 2);
                 
             });
-            
-//                console.log(send_this);
+            console.log(send_this);
         });
-//        console.log("------------------------");
+        console.log("------------------------");
     }, 1000);
     
 });
