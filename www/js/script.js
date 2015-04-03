@@ -1,4 +1,3 @@
-var color = "#0f0";
 /**
  * Function to map 0-360 to 0-255
  * https://github.com/FastLED/FastLED/issues/147
@@ -38,7 +37,7 @@ var client = new Messaging.Client(host, port, "myclientid_" + parseInt(Math.rand
 //Gets  called if the websocket/mqtt connection gets disconnected for any reason
 client.onConnectionLost = function (responseObject) {
     //Depending on your scenario you could implement a reconnect logic here
-    $("#messages").append("connection lost: " + responseObject.errorMessage);
+    $("#messages").append("Connection lost: " + responseObject.errorMessage);
 };
 
 //Gets called whenever you receive a message for your subscriptions
@@ -76,27 +75,7 @@ var publish = function (payload, topic, qos) {
 };
 
 $(document).ready(function () {
-    client.connect(options);
-    
-    isMouseDown = false;
-    $('td').mousedown(function() {
-        isMouseDown = true;
-        $(this).css({backgroundColor:'red'});
-    }).mouseup(function() {
-        isMouseDown = false;
-    });
-
-    $('td').hover(function() {
-        if(isMouseDown)
-            $(this).css({backgroundColor:'orange'});
-    });
-    
-    $("td").on("touchmove", function (event){
-        var coords = event.originalEvent.touches[0];
-        if($(document.elementFromPoint(coords.clientX, coords.clientY)).is("td")){
-            $(document.elementFromPoint(coords.clientX, coords.clientY)).css({backgroundColor:'green'});
-        }
-    });
+//    client.connect(options);
     
     // Responsive grid...
     function responsiveGrid(){
@@ -150,9 +129,9 @@ $(document).ready(function () {
                 
             });
             
-                console.log(send_this);
+//                console.log(send_this);
         });
-        console.log("------------------------");
+//        console.log("------------------------");
     }, 1000);
     
 });
