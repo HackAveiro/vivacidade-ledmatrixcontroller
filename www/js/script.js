@@ -29,7 +29,6 @@ Raphael(function () {
 host = 'shineupon.me';
 port = 9001;
 topic = '/hackaveiro/';
-last_message_time = Date.now();
 
 //Using the HiveMQ public Broker, with a random client Id
 var client = new Messaging.Client(host, port, "myclientid_" + parseInt(Math.random() * 100, 10));
@@ -37,13 +36,15 @@ var client = new Messaging.Client(host, port, "myclientid_" + parseInt(Math.rand
 //Gets  called if the websocket/mqtt connection gets disconnected for any reason
 client.onConnectionLost = function (responseObject) {
     //Depending on your scenario you could implement a reconnect logic here
-    $("#messages").append("Connection lost: " + responseObject.errorMessage);
+    //$("#messages").append("Connection lost: " + responseObject.errorMessage);
+    $("#messages").append("Desligado");
+    $("#block").show();
 };
 
 //Gets called whenever you receive a message for your subscriptions
 client.onMessageArrived = function (message) {
     //Do something with the push message you received
-    last_message_time = Date.now();
+    
     //$('#messages').append('<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span>');
 };
 
@@ -52,12 +53,14 @@ var options = {
     timeout: 3,
     //Gets Called if the connection has sucessfully been established
     onSuccess: function () {
-        $("#messages").append("Connected");
+        $("#messages").append("Ligado");
         client.subscribe(topic + '#', {qos: 2});
     },
     //Gets Called if the connection could not be established
     onFailure: function (message) {
-        $("#messages").append("Connection failed: " + message.errorMessage);
+        //$("#messages").append("Connection failed: " + message.errorMessage);
+        $("#messages").append("Não foi possivel establecer ligação");
+        $("#block").show();
     }
 };
 
@@ -67,11 +70,8 @@ var publish = function (payload, topic, qos) {
     var message = new Messaging.Message("" + payload);
     message.destinationName = topic;
     message.qos = qos;
-
-    if ((Date.now() - last_message_time) > 250) {
-        last_message_time = Date.now();
-        client.send(message);
-    }
+    
+    client.send(message);
 };
 
     // Responsive grid...

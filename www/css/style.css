@@ -10,6 +10,15 @@
     background-color: black;
 }
 
+#block {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    display: none;
+}
+
 /* Vertically aling on ion-content */
 .center{
   display: -webkit-box;
