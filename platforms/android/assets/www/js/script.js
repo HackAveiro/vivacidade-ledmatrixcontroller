@@ -74,22 +74,20 @@ var publish = function (payload, topic, qos) {
     }
 };
 
-// Responsive grid...
+    // Responsive grid...
     function responsiveGrid(){
-        if($(".scroll-content:eq(0)").height() > $(".scroll-content:eq(0)").width()){
-            $("#grid").height($(".scroll-content:eq(0)").width());
-            $("#grid").width($(".scroll-content:eq(0)").width());
-        } else {
-            $("#grid").height($(".scroll-content:eq(0)").height());
-            $("#grid").width($(".scroll-content:eq(0)").height());
-        }
+        setInterval(function (){
+            if($(".scroll-content:eq(0)").height() > $(".scroll-content:eq(0)").width()){
+                $("#grid").height($(".scroll-content:eq(0)").width());
+                $("#grid").width($(".scroll-content:eq(0)").width());
+            } else {
+                $("#grid").height($(".scroll-content:eq(0)").height());
+                $("#grid").width($(".scroll-content:eq(0)").height());
+            }
+        }, 1000);
     }
 
 $(document).ready(function () {
-    
-    $(window).on("orientationchange resize",function(){
-        responsiveGrid();
-    });
     
     setInterval(function (){
         $("#grid").children().children().each(function (row_index, row){
