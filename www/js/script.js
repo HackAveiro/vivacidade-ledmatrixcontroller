@@ -26,7 +26,7 @@ Raphael(function () {
     };
 });
 
-host = 'shineupon.me';
+host = 'test.mosquitto.org';
 port = 9001;
 topic = '/hackaveiro/';
 
