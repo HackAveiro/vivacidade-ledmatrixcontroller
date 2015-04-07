@@ -55,7 +55,7 @@ var options = {
     //Gets Called if the connection has sucessfully been established
     onSuccess: function () {
         $("#messages").append("Ligado");
-        client.subscribe(topic + '#', {qos: 2});
+        client.subscribe(topic, {qos: 2});
     },
     //Gets Called if the connection could not be established
     onFailure: function (message) {
@@ -115,9 +115,10 @@ $(document).ready(function () {
                         ("000" + color.S.map()).substr(-3, 3) +
                         ("000" + color.L.map()).substr(-3, 3);
                 
-                publish("100", topic + 'bitmap', 2);
+                
                 
             });
+            publish(send_this, topic + 'bitmap', 2);
             console.log(send_this);
         });
         console.log("------------------------");
