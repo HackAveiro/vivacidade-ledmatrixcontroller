@@ -30,6 +30,40 @@ host = 'shineupon.me';
 port = 9001;
 topic = '/hackaveiro/';
 
+
+// Create a client instance
+client = new Paho.MQTT.Client(host, Number(port), "clientId_" + parseInt(Math.random() * 100, 10));
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+
+
+// called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  //client.subscribe("/World");
+  
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:"+message.payloadString);
+}
+
+/*
+
 //Using the HiveMQ public Broker, with a random client Id
 var client = new Messaging.Client(host, port, "myclientid_" + parseInt(Math.random() * 100, 10));
 
@@ -75,6 +109,8 @@ var publish = function (payload, topic, qos) {
     //localStorage.clear();
 };
 
+*/
+
     // Responsive grid...
     function responsiveGrid(){
         setInterval(function (){
@@ -118,7 +154,10 @@ $(document).ready(function () {
                 
                 
             });
-            publish(send_this, topic + 'bitmap', 2);
+            message = new Paho.MQTT.Message(send_this);
+          message.destinationName = topic + 'bitmap';
+          client.send(message);
+            //publish(send_this, topic + 'bitmap', 2);
             console.log(send_this);
         });
         console.log("------------------------");
