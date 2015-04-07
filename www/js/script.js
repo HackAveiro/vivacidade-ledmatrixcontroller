@@ -6,12 +6,12 @@ Number.prototype.map = function () {
     return Math.round((this - 0) * (255 - 0) / (360 - 0) + 0);
 };
 
-Raphael(function () {
-    var reg = /^#(.)\1(.)\2(.)\3$/,
-    cp = Raphael.colorpicker(0, 0, 200, "#eee", "picker");
+//Raphael(function () {
+//    var reg = /^#(.)\1(.)\2(.)\3$/,
+   // cp = Raphael.colorpicker(0, 0, 200, "#eee", "picker");
     
-    cp.onchange = function (color) {
-        $("#picker").data("color", color);
+  //  cp.onchange = function (color) {
+     //   $("#picker").data("color", color);
 //        var hsv_object = Colors.hex2hsv(color);
 //        console.log(hsv_object);
         
@@ -23,10 +23,10 @@ Raphael(function () {
 //        console.log(send_this);
 //        publish(send_this, topic + 'bitmap', 2);
         
-    };
-});
+   // };
+//});
 
-host = 'test.mosquitto.org';
+host = 'shineupon.me';
 port = 9001;
 topic = '/hackaveiro/';
 
