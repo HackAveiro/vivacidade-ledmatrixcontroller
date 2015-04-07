@@ -51,6 +51,7 @@ client.onMessageArrived = function (message) {
 //Connect Options
 var options = {
     timeout: 3,
+    cleanSession: true,
     //Gets Called if the connection has sucessfully been established
     onSuccess: function () {
         $("#messages").append("Ligado");
@@ -70,8 +71,8 @@ var publish = function (payload, topic, qos) {
     var message = new Messaging.Message("" + payload);
     message.destinationName = topic;
     message.qos = qos;
-    
     client.send(message);
+    //localStorage.clear();
 };
 
     // Responsive grid...
@@ -114,7 +115,7 @@ $(document).ready(function () {
                         ("000" + color.S.map()).substr(-3, 3) +
                         ("000" + color.L.map()).substr(-3, 3);
                 
-                publish(send_this, topic + 'bitmap', 2);
+                publish("100", topic + 'bitmap', 2);
                 
             });
             console.log(send_this);
