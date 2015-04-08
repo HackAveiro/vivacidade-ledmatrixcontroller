@@ -158,9 +158,9 @@ $(document).ready(function () {
           message.destinationName = topic + 'bitmap';
           client.send(message);
             //publish(send_this, topic + 'bitmap', 2);
-            console.log(send_this);
+        //    console.log(send_this);
         });
-        console.log("------------------------");
+      //  console.log("------------------------");
     }, 1000);
     
 });
