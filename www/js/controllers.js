@@ -4,8 +4,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DrawCtrl', function ($scope) {
-    responsiveGrid();
-    
     isMouseDown = false;
     $('td').mousedown(function() {
         isMouseDown = true;

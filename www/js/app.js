@@ -18,6 +18,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             StatusBar.styleDefault();
         }
         //client.connect(options);
+        responsiveGrid();
     });
 })
 
