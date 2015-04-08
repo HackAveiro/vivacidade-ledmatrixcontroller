@@ -23,4 +23,8 @@ angular.module('starter.controllers', [])
             $(document.elementFromPoint(coords.clientX, coords.clientY)).css({backgroundColor:'green'});
         }
     });
+}).controller('TicTacCtrl', function ($scope) {
+
+        responsiveGrid();
+
 });

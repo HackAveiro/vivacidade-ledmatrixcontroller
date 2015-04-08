@@ -39,6 +39,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 controller: 'DrawCtrl'
             }
         }
+    }).state('app.tictac', {
+        url: "/tictac",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/tictac.html",
+                controller: 'TicTacCtrl'
+            }
+        }
     });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/draw');
