@@ -3,7 +3,42 @@ angular.module('starter.controllers', [])
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 })
 
-.controller('DrawCtrl', function ($scope) {
+.controller('DrawCtrl', function ($scope, $ionicModal) {
+    
+    // Create the Color Picker modal
+    $ionicModal.fromTemplateUrl('templates/colorpicker.html', {
+        scope: $scope
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    
+    // Close modal
+    $scope.closeColorPicker = function() {
+        $scope.modal.hide();
+    };
+    
+    // Color Picker modal
+    $scope.colorPicker = function () {
+        $scope.modal.show();
+        
+        Raphael(function () {
+            var reg = /^#(.)\1(.)\2(.)\3$/,
+                cp = Raphael.colorpicker(0, 0, 200, "#eee", "picker");
+            cp.onchange = function (color) {
+                $("#picker").data("color", color);
+                var hsv_object = Colors.hex2hsv(color);
+                console.log(hsv_object);
+                
+                var send_this =
+                    ("000" + hsv_object.H.map()).substr(-3, 3) +
+                    ("000" + hsv_object.S.map()).substr(-3, 3) +
+                    ("000" + hsv_object.V.map()).substr(-3, 3);
+                console.log(send_this);
+                publish(send_this, topic + 'bitmap', 2);
+            };
+        });
+    };
+    
     isMouseDown = false;
     $('td').mousedown(function() {
         isMouseDown = true;
