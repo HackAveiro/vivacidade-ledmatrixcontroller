@@ -39,7 +39,7 @@ client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 
 // connect the client
-client.connect({onSuccess:onConnect});
+client.connect({timeout: 3, onSuccess:onConnect, cleanSession: true, mqttVersion: 3});
 
 
 // called when the client connects
