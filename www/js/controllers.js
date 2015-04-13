@@ -4,6 +4,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DrawCtrl', function ($scope, $ionicModal) {
+    $scope.color = "#000";
     
     // Create the Color Picker modal
     $ionicModal.fromTemplateUrl('templates/colorpicker.html', {
@@ -17,45 +18,45 @@ angular.module('starter.controllers', [])
         $scope.modal.hide();
     };
     
+    // Submit
+    $scope.submitColorPicker = function() {
+        
+        $scope.modal.hide();
+    };
+    
     // Color Picker modal
     $scope.colorPicker = function () {
         $scope.modal.show();
-        
-        Raphael(function () {
-            var reg = /^#(.)\1(.)\2(.)\3$/,
-                cp = Raphael.colorpicker(0, 0, 200, "#eee", "picker");
-            cp.onchange = function (color) {
-                $("#picker").data("color", color);
-                var hsv_object = Colors.hex2hsv(color);
-                console.log(hsv_object);
-                
-                var send_this =
-                    ("000" + hsv_object.H.map()).substr(-3, 3) +
-                    ("000" + hsv_object.S.map()).substr(-3, 3) +
-                    ("000" + hsv_object.V.map()).substr(-3, 3);
-                console.log(send_this);
-                publish(send_this, topic + 'bitmap', 2);
-            };
+        $('#picker').colpick({
+            submit: false,
+            color: "000000",
+            flat:true,
+            layout: "rgbhex",
+            onChange:function(hsb,hex,rgb,el,bySetColor) {
+                $(".modal .center").css('background-color','#'+hex);
+                console.log(rgb);
+                $scope.color = '#'+hex;
+            }
         });
     };
     
     isMouseDown = false;
     $('td').mousedown(function() {
         isMouseDown = true;
-        $(this).css({backgroundColor:'red'});
+        $(this).css({backgroundColor: $scope.color});
     }).mouseup(function() {
         isMouseDown = false;
     });
     
     $('td').hover(function() {
         if(isMouseDown)
-            $(this).css({backgroundColor:'orange'});
+            $(this).css({backgroundColor: $scope.color});
     });
     
     $("td").on("touchmove", function (event){
         var coords = event.originalEvent.touches[0];
         if($(document.elementFromPoint(coords.clientX, coords.clientY)).is("td")){
-            $(document.elementFromPoint(coords.clientX, coords.clientY)).css({backgroundColor:'green'});
+            $(document.elementFromPoint(coords.clientX, coords.clientY)).css({backgroundColor:$scope.color});
         }
     });
 }).controller('TicTacCtrl', function ($scope) {

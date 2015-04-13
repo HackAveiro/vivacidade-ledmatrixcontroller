@@ -50,3 +50,7 @@
   -ms-flex-align: center;
   align-items: center;
 }
+
+.colpick_field_letter {
+    width: 17px;
+}
