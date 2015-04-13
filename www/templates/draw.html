@@ -1,8 +1,14 @@
 <ion-view view-title="Desenhar">
     <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="clearDraw()">
+            <i class="icon ion-trash-a"></i>
+        </button>
         <button class="button button-clear" ng-click="colorPicker()">
             <i class="icon ion-android-color-palette"></i>
         </button>
+        <!--<button class="button button-clear" ng-click="saveFrame()">
+            <i class="icon ion-android-color-palette"></i>
+        </button>-->
     </ion-nav-buttons>
     <ion-content scroll="false" class="center">
         <div id="block"></div>

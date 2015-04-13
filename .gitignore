@@ -1,2 +1,5 @@
 *.keystore
-/node_modules
+node_modules/
+platforms/
+plugins/
+www/lib/

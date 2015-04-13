@@ -26,8 +26,8 @@ Number.prototype.map = function () {
    // };
 //});
 
-host = 'shineupon.me';
-port = 9001;
+host = 'broker.mqtt-dashboard.com';
+port = 8000;
 topic = '/hackaveiro/';
 
 
