@@ -22,16 +22,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.views.maxCache(0); // This way views are not cached, and that solves the responsiveness problem...
+    
     $stateProvider
-
     .state('app', {
         url: "/app",
         abstract: true,
         templateUrl: "templates/menu.html",
         controller: 'AppCtrl'
-    })
-    .state('app.draw', {
+    }).state('app.draw', {
         url: "/draw",
         views: {
             'menuContent': {
