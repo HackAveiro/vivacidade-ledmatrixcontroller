@@ -10,9 +10,6 @@
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
-        <ion-footer-bar class="bar-balanced">
-            <div id="messages" class="title"></div>
-        </ion-footer-bar>
     </ion-side-menu-content>
 
     <ion-side-menu side="left">
@@ -24,7 +21,7 @@
                 <ion-item class="item-icon-left" nav-clear menu-close href="#/app/draw">
                     <i class="icon ion-edit"></i>  Desenhar
                 </ion-item>
-                                <ion-item class="item-icon-left" nav-clear menu-close href="#/app/tictac">
+                <ion-item class="item-icon-left" nav-clear menu-close href="#/app/tictac">
                     <i class="icon ion-pound"></i>  Jogo do Galo
                 </ion-item>
                 <!--        <ion-item nav-clear menu-close href="#/app/browse">
@@ -36,10 +33,14 @@
                 <!--        <ion-item nav-clear menu-close ng-click="login()">
                             Login
                         </ion-item>-->
-<!--        <ion-item nav-clear menu-close ng-click="login()">
-                            About (project info/contacts)
-                        </ion-item>-->
+                <ion-item class="item-icon-left" nav-clear menu-close href="#/app/about">
+                    <i class="icon ion-information-circled"></i>
+                    Sobre
+                </ion-item>
             </ion-list>
         </ion-content>
+        <ion-footer-bar class="bar-dark">
+            <div id="messages" class="title">?</div>
+        </ion-footer-bar>
     </ion-side-menu>
 </ion-side-menus>
