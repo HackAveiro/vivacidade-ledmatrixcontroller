@@ -40,6 +40,10 @@ angular.module('starter.controllers', [])
       });
     };
     
+    $scope.clearDraw = function(){
+        $("td").css({backgroundColor: "#000"});
+    };
+    
     isMouseDown = false;
     $('td').mousedown(function() {
       isMouseDown = true;
