@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DrawCtrl', function ($scope, $ionicModal) {
-  $scope.color = "#000";
+  $scope.color = "#FFF";
 
     // Create the Color Picker modal
     $ionicModal.fromTemplateUrl('templates/colorpicker.html', {
@@ -18,9 +18,13 @@ angular.module('starter.controllers', [])
       $scope.modal.hide();
     };
     
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
+    
     // Submit
     $scope.submitColorPicker = function() {
-
       $scope.modal.hide();
     };
     
@@ -29,12 +33,11 @@ angular.module('starter.controllers', [])
       $scope.modal.show();
       $('#picker').colpick({
         submit: false,
-        color: "000000",
+        color: "FFFFFF",
         flat:true,
         layout: "rgbhex",
         onChange:function(hsb,hex,rgb,el,bySetColor) {
           $(".modal .center").css('background-color','#'+hex);
-          console.log(rgb);
           $scope.color = '#'+hex;
         }
       });
