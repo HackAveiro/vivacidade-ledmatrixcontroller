@@ -17,25 +17,41 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
         }
-        client.connect(options);
+        //client.connect(options);
+        responsiveGrid();
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.views.maxCache(0); // This way views are not cached, and that solves the responsiveness problem...
+    
     $stateProvider
-
     .state('app', {
         url: "/app",
         abstract: true,
         templateUrl: "templates/menu.html",
         controller: 'AppCtrl'
-    })
-    .state('app.draw', {
+    }).state('app.draw', {
         url: "/draw",
         views: {
             'menuContent': {
                 templateUrl: "templates/draw.html",
                 controller: 'DrawCtrl'
+            }
+        }
+    }).state('app.tictac', {
+        url: "/tictac",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/tictac.html",
+                controller: 'TicTacCtrl'
+            }
+        }
+    }).state('app.about', {
+        url: "/about",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/about.html"
             }
         }
     });
