@@ -34,5 +34,7 @@
     "express"
   ],
   "license": "MIT",
-  "cordovaPlugins": []
+  "cordovaPlugins": [
+    "org.apache.cordova.inappbrowser"
+  ]
 }
