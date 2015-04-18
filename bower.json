@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "colpick-jQuery-Color-Picker": "josedvq/colpick-jQuery-Color-Picker#2.0.2",
-    "org.eclipse.paho.mqtt.javascript": "http://git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.javascript.git#1.0.1"
+    "org.eclipse.paho.mqtt.javascript": "http://git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.javascript.git#1.0.1",
+    "jquery": "~2.1.3"
   }
 }
