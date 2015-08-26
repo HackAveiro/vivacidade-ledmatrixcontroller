@@ -36,5 +36,8 @@
   "license": "MIT",
   "cordovaPlugins": [
     "org.apache.cordova.inappbrowser"
+  ],
+  "cordovaPlatforms": [
+    "android"
   ]
 }
