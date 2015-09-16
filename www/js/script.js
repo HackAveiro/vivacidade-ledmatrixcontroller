@@ -76,6 +76,10 @@ $(document).ready(function () {
                 message = new Paho.MQTT.Message(send_this.toUpperCase());
                 message.destinationName = topic + 'bitmap';
                 client.send(message);
+
+                message = new Paho.MQTT.Message("webapp");
+                message.destinationName = topic + 'mode';
+                client.send(message);
             }
         });
     }, 500);
