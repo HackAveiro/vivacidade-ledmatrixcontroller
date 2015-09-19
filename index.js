@@ -32,7 +32,7 @@ client.on('message', function (topic, message) {
 });
 
 setInterval(function(){
-	if(parseInt((Date.now()-dat_mode)/1000) >= 30){
+	if(parseInt((Date.now()-dat_mode)/1000) >= 300){
 		var new_matrix = "";
 		matrix.split(", ").forEach(function(element, index){
 			if(index==9){
