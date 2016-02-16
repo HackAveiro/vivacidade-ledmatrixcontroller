@@ -58,10 +58,11 @@ function responsiveGrid(){
 
 $(document).ready(function () {
 
+    var old_rows = new Array();
     setInterval(function (){
         $("#grid").children().children().each(function (row_index, row){
             var send_this = row_index;
-            $(row).children().each(function (col_index,col){
+            $(row).children().each(function (col_index, col){
                 var color = $(col).css("background-color").replace("rgb(", "").replace("rgba(", "").replace(")", "").trim().split(",");
 
                 send_this +=
@@ -70,12 +71,17 @@ $(document).ready(function () {
                   ("00" + parseInt(color[2].trim()).toString(16)).substr(-2, 2);
 
             });
-            if(row_index == 0){
-              message = new Paho.MQTT.Message(send_this.toUpperCase());
-              message.destinationName = topic + 'bitmap';
-              client.send(message);
+            if(old_rows[row_index] != send_this){
+                old_rows[row_index] = send_this;
+                message = new Paho.MQTT.Message(send_this.toUpperCase());
+                message.destinationName = topic + 'bitmap';
+                client.send(message);
+
+                message = new Paho.MQTT.Message("webapp");
+                message.destinationName = topic + 'mode';
+                client.send(message);
             }
         });
-    }, 1000);
+    }, 500);
 
 });
